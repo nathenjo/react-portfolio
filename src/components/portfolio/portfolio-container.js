@@ -1,8 +1,8 @@
 import { directive } from "babel-types";
 import React, { Component } from "react";
+import axios from 'axios';
 
 import PortfolioItem from "./portfolio-item";
-
 
 export default class PortfolioContainer extends Component {
     constructor() {
@@ -10,12 +10,7 @@ export default class PortfolioContainer extends Component {
         
         this.state = {
             pageTitle: "Welcome to my Portfolio",
-            data: [
-                {title: 'Devcamp Fries', category: "eCommerce", slug: "devcamp-fries"},
-                {title: 'This Portfolio', category: "React", slug: "this-portfolio"},
-                {title: 'Python Projects', category: 'Coding', slug: "python-projects"},
-                {title: 'Javascript Projects', category: 'Coding', slug: 'javascript-projects'}
-            ]
+            data: []
         };
 
         this.handleFilter = this.handleFilter.bind(this);
@@ -29,13 +24,36 @@ export default class PortfolioContainer extends Component {
         })
     }
 
+    getPortfolioItems() {
+        axios.get('https://nathenjohnson.devcamp.space/portfolio/portfolio_items')
+          .then(response => {
+            this.setState({
+                data: response.data.portfolio_items
+            })
+          })
+          .catch(error => {
+            console.log(error);
+          })
+        }
+
     portfolioItems() {
         return this.state.data.map(item => {
-            return <PortfolioItem title={item.title} url={'google.com'} slug={item.slug}/>;
+            return <PortfolioItem
+                key={item.id}
+                item={item}
+            />;
         })
     }
 
+    componentDidMount() {
+        this.getPortfolioItems();
+    }
+
     render() {
+        if (this.state.isLoading) {
+            return <div>Loading...</div>
+        }
+
         return (
             <div>
                 <h2>{this.state.pageTitle}</h2>
@@ -44,7 +62,9 @@ export default class PortfolioContainer extends Component {
                 <button onClick={() => this.handleFilter('React')}>React</button>
                 <button onClick={() => this.handleFilter('Coding')}>Coding</button>
 
-                {this.portfolioItems()}
+                <div className="portfolio-items-wrapper">
+                    {this.portfolioItems()}
+                </div>
             </div>
         )
     }

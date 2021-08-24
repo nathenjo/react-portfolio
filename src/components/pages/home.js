@@ -4,7 +4,6 @@ import PortfolioContainer from "../portfolio/portfolio-container";
 export default function(props){
        return(
          <div>
-             <h2>Homepage</h2>
             <PortfolioContainer />
          </div>
        );
