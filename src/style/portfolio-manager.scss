@@ -1,0 +1,15 @@
+.portfolio-manager-wrapper {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    font-family: $customFont;
+
+    .portfolio-left-column {
+        background-color: $offwhite;
+        padding-left: 24px;
+    }
+
+    .portfolio-right-column {
+        background-color: $charcoal;
+        padding-left: 24px;
+    }
+}
