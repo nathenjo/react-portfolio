@@ -35,5 +35,12 @@
 
     .right-side a {
         cursor: pointer;
+        margin-left: 15px;
+        color: $teal;
+        font-size: 1.25em;
+        transition: 0.25s all ease-in-out;
+        &:hover {
+            color: $dark-teal;
+        }
     }
 }
