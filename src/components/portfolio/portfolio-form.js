@@ -149,7 +149,7 @@ export default class PortfolioForm extends Component {
     axios({
       method: this.state.apiAction,
       url: this.state.apiUrl,
-      data: this.buildForm(),
+      data: this.buildForm(), 
       withCredentials: true
     })
       .then(response => {
