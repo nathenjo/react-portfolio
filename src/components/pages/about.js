@@ -15,8 +15,9 @@ export default function(props){
             </div>
 
             <div className='right-side-content'>
-              <h1>Here is about me</h1>
-              <p>Some random facts</p>
+              <h1>About Me</h1>
+              <p>I am a student at Bottega University in the Full Stack Developer Course</p>
+              <p>I am scheduled to finish the program in January of 2021, and am looking to become a junior developer once I am finished</p>
             </div>
          </div>
        );
