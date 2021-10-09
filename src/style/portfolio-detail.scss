@@ -1,0 +1,35 @@
+.portfolio-detail-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    font-size: 1.25em;
+
+    img {
+        width: 75%; 
+    }
+
+    a {
+        margin: 10px 0px 10px 0px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: 0.1s;
+
+        &:hover {
+            text-shadow: 1px 1px black;
+        }
+    }
+
+    .portfilio-footer {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 50%;
+
+        img {
+            width: 25%;
+            height: fit-content;
+        }
+    }
+}
